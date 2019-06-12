@@ -1,0 +1,14 @@
+[![official JetBrains project](https://jb.gg/badges/official.svg)](https://confluence.jetbrains.com/display/ALL/JetBrains+on+GitHub)
+[![GitHub license](https://img.shields.io/badge/license-Apache%20License%202.0-blue.svg?style=flat)](https://www.apache.org/licenses/LICENSE-2.0)
+
+
+Kotlin Fractals Hand On
+=======================
+
+The hands-on labs project to demonstrate and learn how to
+create an Kotlin Multiplatform project (MPP) with Kotlin/JVM
+and Kotlin/JS
+
+
+
+
