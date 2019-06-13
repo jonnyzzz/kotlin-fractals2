@@ -9,6 +9,18 @@ The hands-on labs project to demonstrate and learn how to
 create an Kotlin Multiplatform project (MPP) with Kotlin/JVM
 and Kotlin/JS
 
+That project is pure Kotlin/JVM project (only now, we will turn
+it to use a multiplatform project (MPP) to combine JVM and JS very soon)
+that renders a fractal images and serves results as a HTTP Web Server. For example, 
+![mandelbrot](mandelbrot.png)
+
+
+### Running 
+
+Open the `build.gradle.kts` project file in IntelliJ IDEA as project. 
+Execute the `run` task to compile and start the application. 
+See the image on the http://127.0.0.1 in the browser 
+
 
 
 

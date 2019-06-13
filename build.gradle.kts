@@ -1,5 +1,6 @@
 plugins {
   kotlin("jvm") version "1.3.31"
+  application
 }
 
 repositories {
@@ -17,4 +18,6 @@ dependencies {
   implementation("ch.qos.logback:logback-classic:$logbackVersion")
 }
 
-
+application {
+   mainClassName = "org.jonnyzzz.kotlin.fractals2.Main_jvmKt"
+}
