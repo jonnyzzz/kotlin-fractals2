@@ -2,7 +2,3 @@
 .gradle
 build/
 *.iml
-
-/.editorconfig
-/.gitattributes
-/.gitignore
