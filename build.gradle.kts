@@ -1,5 +1,5 @@
 plugins {
-  kotlin("jvm") version "1.3.31"
+  kotlin("multiplatform") version "1.3.31"
   application
 }
 
@@ -8,10 +8,14 @@ repositories {
   mavenCentral()
 }
 
+kotlin {
+  jvm()
+}
+
 val ktorVersion = "1.2.1"
 val logbackVersion = "1.2.3"
 
-dependencies {
+kotlin.sourceSets["jvmMain"].dependencies {
   implementation(kotlin("stdlib-jdk8"))
   implementation("io.ktor:ktor-server-netty:$ktorVersion")
   implementation("io.ktor:ktor-html-builder:$ktorVersion")
