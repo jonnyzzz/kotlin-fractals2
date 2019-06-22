@@ -32,8 +32,8 @@ object ColorPicker {
       hueToRGB(p, q, h - 1.0f / 3.0f).normalizedByte)
   }
 
-  private fun hueToRGB(p: Float, q: Float, h: Float): Float {
-    val h = h.normalized
+  private fun hueToRGB(p: Float, q: Float, hh: Float): Float {
+    val h = hh.normalized
     return when {
       6 * h < 1 -> p + (q - p) * 6f * h
       2 * h < 1 -> q
