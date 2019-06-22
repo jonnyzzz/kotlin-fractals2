@@ -19,7 +19,10 @@ that renders a fractal images and serves results as a HTTP Web Server. For examp
 
 Open the `build.gradle.kts` project file in IntelliJ IDEA as project. 
 Execute the `run` task to compile and start the application. 
-See the image on the http://127.0.0.1 in the browser 
+See the image on the http://127.0.0.1:8888 in the browser 
+
+Once started, use `jsRun` task to execute the JS part in the
+web browser.
 
 
 
