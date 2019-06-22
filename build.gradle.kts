@@ -1,3 +1,5 @@
+import org.jetbrains.kotlin.gradle.targets.js.KotlinJsTarget
+
 plugins {
   kotlin("multiplatform") version "1.3.40"
 }
@@ -8,10 +10,20 @@ repositories {
 }
 
 kotlin {
+  js {
+    useCommonJs()
+    browser()
+  }
+
   jvm()
 
   val ktorVersion = "1.2.1"
   val logbackVersion = "1.2.3"
+
+  sourceSets["jsMain"].dependencies {
+    implementation(kotlin("stdlib-js"))
+    implementation("org.jetbrains.kotlinx:kotlinx-html-js:0.6.12")
+  }
 
   sourceSets["jvmMain"].dependencies {
     implementation(kotlin("stdlib-jdk8"))
@@ -23,6 +35,8 @@ kotlin {
   val run by tasks.creating(JavaExec::class) {
     group = "application"
     dependsOn(targets["jvm"].compilations["main"].compileAllTaskName)
+    (targets["js"] as KotlinJsTarget).browser.webpackTask {}
+    dependsOn("jsBrowserWebpack")
     main = "org.jonnyzzz.kotlin.fractals2.MainKt"
     classpath(
       { targets["jvm"].compilations["main"].output.allOutputs.files },
