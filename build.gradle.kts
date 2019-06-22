@@ -1,6 +1,5 @@
 plugins {
-  kotlin("jvm") version "1.3.31"
-  application
+  kotlin("jvm") version "1.3.40"
 }
 
 repositories {
@@ -18,8 +17,14 @@ dependencies {
   implementation("ch.qos.logback:logback-classic:$logbackVersion")
 }
 
-application.mainClassName = "org.jonnyzzz.kotlin.fractals2.MainKt"
-
-tasks.run.configure {
+val run by tasks.creating(JavaExec::class) {
+  group = "application"
+  dependsOn(tasks.classes)
+  main = "org.jonnyzzz.kotlin.fractals2.MainKt"
+  classpath(
+    { sourceSets["main"].output },
+    { configurations.runtimeClasspath }
+  )
+  ///disable app icon on macOS
   systemProperty("java.awt.headless", "true")
 }
