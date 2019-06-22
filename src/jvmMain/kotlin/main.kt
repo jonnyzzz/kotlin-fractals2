@@ -29,7 +29,7 @@ fun ApplicationCall.paramBoolean(name: String, def: Boolean = false) = param(nam
 
 fun main() {
 
-  embeddedServer(Netty, host = "127.0.0.1", port = 8888) {
+  embeddedServer(Netty, host = jvmHost, port = jvmPort) {
     install(DefaultHeaders)
     install(CallLogging)
     install(Routing) {
