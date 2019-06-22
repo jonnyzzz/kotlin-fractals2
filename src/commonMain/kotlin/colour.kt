@@ -2,7 +2,6 @@
 
 package org.jonnyzzz.kotlin.fractals2
 
-import java.awt.Color
 import kotlin.math.ln
 
 fun pickColor(z: Complex, iterations: Int): Color {
@@ -22,7 +21,7 @@ private fun hslToRGB(hh: Float, ss: Float, ll: Float): Color {
   }
 
   val p = 2 * l - q
-  return Color(
+  return Colors.newColor(
     hueToRGB(p, q, h + 1.0f / 3.0f).normalizedByte,
     hueToRGB(p, q, h).normalizedByte,
     hueToRGB(p, q, h - 1.0f / 3.0f).normalizedByte)
