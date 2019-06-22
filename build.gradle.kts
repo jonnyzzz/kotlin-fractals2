@@ -18,6 +18,8 @@ dependencies {
   implementation("ch.qos.logback:logback-classic:$logbackVersion")
 }
 
-application {
-   mainClassName = "org.jonnyzzz.kotlin.fractals2.Main_jvmKt"
+application.mainClassName = "org.jonnyzzz.kotlin.fractals2.MainKt"
+
+tasks.run.configure {
+  systemProperty("java.awt.headless", "true")
 }
