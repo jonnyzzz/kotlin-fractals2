@@ -7,8 +7,6 @@ interface FractalImage {
   fun putPixel(p: Pixel, c: Color)
 }
 
-typealias MandelbrotRenderTask = () -> Unit
-
 object MandelbrotRender {
   val initialArea = Rect(-2.0, -2.0, 2.0, 2.0)
 
@@ -16,33 +14,24 @@ object MandelbrotRender {
                  image: FractalImage,
                  area: Rect<Double>) {
 
-    justRenderTasks(
-            maxIterations = maxIterations,
-            image = image,
-            area = area).forEach { it() }
-  }
+    Transformation(pixelRect = image.pixelRect, fractalRect = area).forEachPixel { p, c ->
+      var z = Complex.ZERO
+      var iterations = 0
 
-  fun justRenderTasks(maxIterations: Int = 1500,
-                      chunk: Int = 100,
-                      image: FractalImage,
-                      area: Rect<Double>): Sequence<MandelbrotRenderTask> {
-
-    val t = Transformation(image.pixelRect, area)
-    return sequence {
-      t.forEachPixel { p, c ->
-        yield(p to c)
-      }
-    }.chunked(chunk).map { tasks ->
-      {
-        tasks.forEach { (p, c) ->
-          val pt = MandelbrotPointIteration(c)
-                  .asSequence()
-                  .take(maxIterations)
-                  .last()
-
-          image.putPixel(p, ColorPicker.selectColour(pt))
+      val color = run {
+        repeat(maxIterations) {
+          z = z * z + c
+          iterations++
+          if (z.mod2 > 4) {
+            //stop repeat{} function and return the color from run{}
+            return@run pickColor(z, iterations)
+          }
         }
+        Color.BLACK
       }
+
+      image.putPixel(p, color)
     }
   }
 }
+
