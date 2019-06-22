@@ -50,5 +50,5 @@ object ColorPicker {
     }
 
   private val Float.normalizedByte
-    get() = (this.normalized*255 + 0.5).toInt()
+    get() = (this.normalized * 255 + 0.5).toInt()
 }
